@@ -27,11 +27,13 @@ import {HiOutlineMail} from "react-icons/hi/index";
   <Container>
     <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3">
         {
-            allImages.slice(0, 6).map((image) => (
+            allImages.slice(0, 6).map((image) => {
+              return (
                 <div class="flex flex-col">
                     <Image src={image.default} aspectRatio={16/9} width={randomWidth()} height={randomWidth()} />
                 </div>
-            ))
+              )
+            })
         }
         <div class="flex flex-col">
             <Image src={bottom1} aspectRatio={16/9} width={randomWidth()} height={randomWidth()}/>
