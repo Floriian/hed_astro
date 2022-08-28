@@ -10,8 +10,9 @@ const randomWidth = () => {
 
 import bottom1 from "../assets/home/9.jpg";
 import bottom2 from "../assets/home/10.jpg";
-import { FiFacebook, FiInstagram } from "react-icons/fi";
-import { HiOutlineMail } from "react-icons/hi";
+import {FiFacebook} from "react-icons/fi/index";
+import {FiInstagram} from "react-icons/fi/index";
+import {HiOutlineMail} from "react-icons/hi/index";
 ---
 
 <Layout title="Havasi Dániel Edvin - Főoldal">
@@ -28,7 +29,7 @@ import { HiOutlineMail } from "react-icons/hi";
         {
             allImages.slice(0, 6).map((image) => (
                 <div class="flex flex-col">
-                    <Image src={image.default} aspectRatio={16/9} width={randomWidth()} height={randomWidth()}/>
+                    <Image src={image.default} aspectRatio={16/9} width={randomWidth()} height={randomWidth()} />
                 </div>
             ))
         }
