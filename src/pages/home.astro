@@ -1,32 +1,17 @@
 ---
+import { Picture, Image } from "@astrojs/image/components"
 import Layout from "../layouts/Layout.astro";
 import { Container } from "../components/Container";
 
-interface IImage {
-    url: string;
+const allImages = await Astro.glob("../assets/home/*.{jpg,png,jpeg}")
+const randomWidth = () => {
+    return Math.floor(Math.random() * (800 - 500 + 1) + 500)
 }
 
-const images: IImage[] = [
-    {
-        url: "/assets/home/2.jpg",
-    },
-    {
-        url: "/assets/home/3.jpg",
-    },
-    {
-        url: "/assets/home/4.jpg",
-    },
-    {
-        url: "/assets/home/5.jpg",
-    },
-    {
-        url: "/assets/home/6.jpg",
-    },
-    {
-        url: "/assets/home/7.jpg",
-    },
-
-];
+import bottom1 from "../assets/home/9.jpg";
+import bottom2 from "../assets/home/10.jpg";
+import { FiFacebook, FiInstagram } from "react-icons/fi";
+import { HiOutlineMail } from "react-icons/hi";
 ---
 
 <Layout title="Havasi Dániel Edvin - Főoldal">
@@ -41,20 +26,31 @@ const images: IImage[] = [
   <Container>
     <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3">
         {
-            images.map((image: IImage) => (
+            allImages.slice(0, 6).map((image) => (
                 <div class="flex flex-col">
-                    <img alt="" src={image.url} loading="lazy"/>
+                    <Image src={image.default} aspectRatio={16/9} width={randomWidth()} height={randomWidth()}/>
                 </div>
             ))
         }
         <div class="flex flex-col">
-            <img src="/assets/home/8.jpg" alt="" loading="lazy">
+            <Image src={bottom1} aspectRatio={16/9} width={randomWidth()} height={randomWidth()}/>
         </div>
-        <div class="flex flex-col h-full md:justify-end">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, ipsam. Rem eum perspiciatis velit quo id aspernatur ipsum, necessitatibus est, laborum eos unde suscipit. A soluta amet natus quod itaque!</p>
+        <div class="flex flex-col h-full md:justify-center">
+          <div class="flex justify-center text-4xl">
+            <FiFacebook className="m-2"/>
+            <FiInstagram className="m-2"/>
+            <HiOutlineMail className="m-2"/>
+            <br>
+          </div>
+          <div class="flex justify-center text-gray-600">
+            <p>&copy; Havasi Edvin Dániel</p>
+          </div>
+          <div class="flex justify-center text-gray-600">
+            <p>Coded by Floriian</p>
+          </div>
         </div>
         <div class="hidden md:flex md:flex-col">
-            <img src="/assets/home/9.jpg" alt="" loading="lazy">
+            <Image src={bottom2} aspectRatio={16/9} width={randomWidth()} height={randomWidth()}/>
         </div>
     </div>
   </Container>
