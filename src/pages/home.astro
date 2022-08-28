@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Container } from "../components/Container";
+
+interface IImage {
+    url: string;
+}
+
+const images: IImage[] = [
+    {
+        url: "/assets/home/2.jpg",
+    },
+    {
+        url: "/assets/home/3.jpg",
+    },
+    {
+        url: "/assets/home/4.jpg",
+    },
+    {
+        url: "/assets/home/5.jpg",
+    },
+    {
+        url: "/assets/home/6.jpg",
+    },
+    {
+        url: "/assets/home/7.jpg",
+    },
+
+];
+---
+
+<Layout title="Havasi Dániel Edvin - Főoldal">
+  <div class="relative w-full h-full overflow-hidden">
+    <img src="/assets/home.jpg" alt="" class="rounded-b-3xl" />
+    <h1
+      class="absolute text-5xl text-black top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 uppercase text-center"
+    >
+      The art of <span class="font-allison">photography</span>
+    </h1>
+  </div>
+  <Container>
+    <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3">
+        {
+            images.map((image: IImage) => (
+                <div class="flex flex-col">
+                    <img alt="" src={image.url} loading="lazy"/>
+                </div>
+            ))
+        }
+        <div class="flex flex-col">
+            <img src="/assets/home/8.jpg" alt="" loading="lazy">
+        </div>
+        <div class="flex flex-col h-full md:justify-end">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, ipsam. Rem eum perspiciatis velit quo id aspernatur ipsum, necessitatibus est, laborum eos unde suscipit. A soluta amet natus quod itaque!</p>
+        </div>
+        <div class="hidden md:flex md:flex-col">
+            <img src="/assets/home/9.jpg" alt="" loading="lazy">
+        </div>
+    </div>
+  </Container>
+</Layout>

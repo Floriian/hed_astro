@@ -1,0 +1,43 @@
+---
+import { BsCamera } from "react-icons/bs/index"
+interface INavLink {
+    name: string;
+    url: string;
+}
+type TNavLink = {
+    name: string;
+    url: string;
+}
+const navLinks: INavLink[] = [
+    {
+        name: "Főoldal",
+        url: "/home",
+    },
+    {
+        name: "Galéria",
+        url: "/gallery",
+    },
+    {
+        name: "Rólam",
+        url: "/about-me",
+    },
+    {
+        name: "Kapcsolat",
+        url: "/contact"
+    }
+]
+---
+<nav>
+    <div class="flex justify-between items-center w-full absolute z-50">
+        <BsCamera className="text-4xl m-10 w-100"/>
+        <div class="w-full flex justify-center text-black">
+            {
+                navLinks.map((navLink: TNavLink, index: number) => (
+                    <a href={navLink.url} class="m-2 border-b-2 border-transparent hover:border-b-white hover:border-b-2 transition-colors duration-150 text-xl uppercase
+                    font-bold font-akshar
+                    ">{navLink.name}</a>
+                ))
+            }
+        </div>
+    </div>
+</nav>

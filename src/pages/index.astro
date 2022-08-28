@@ -1,0 +1,54 @@
+---
+import { LandingButton } from "../components/LandingButton";
+import { BsCamera } from "react-icons/bs/index"
+import { FiFacebook, FiInstagram } from "react-icons/fi/index"
+import { HiOutlineMail } from "react-icons/hi/index"
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Akshar&display=swap" rel="stylesheet">
+		<title>Havasi Dániel Edvin</title>
+	</head>
+	<body>
+		<main class="flex justify-end font-akshar">
+			<div class="md:m-40">
+				<section class="text-center flex justify-center">
+					<BsCamera className="text-7xl"/>
+				</section>
+				<section class="text-center m-1 text-white font-bold">
+					<p class="uppercase text-2xl"><span class="font-bold">Havasi</span> Dániel Edvin</p>
+				</section>
+				<section class="first-letter:uppercase mt-24 text-xl text-center text-white font-semibold">
+					<p>Photographer based in Kiskunhalas</p>
+					<p>Email: akurvaanyádaddida@gmail.com</p>
+				</section>
+				<section class="mt-16 flex justify-center">
+					<LandingButton/>
+				</section>
+				<section class="mt-14 flex justify-center text-4xl text-white">
+					<FiFacebook className="m-2"/>
+					<FiInstagram className="m-2"/>
+					<HiOutlineMail className="m-2"/>
+				</section>
+			</div>
+		</main>
+	</body>
+</html>
+
+<style>
+	
+    body {
+        background: url("/assets/landingbg.jpg") no-repeat center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
