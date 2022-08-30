@@ -1,5 +1,6 @@
 ---
 import { BsCamera } from "react-icons/bs/index"
+import { GrMenu } from "react-icons/gr/index"
 interface INavLink {
     name: string;
     url: string;
@@ -26,18 +27,51 @@ const navLinks: INavLink[] = [
         url: "/contact"
     }
 ]
+
+//TODO: responsive menu
 ---
 <nav>
     <div class="flex justify-between items-center w-full absolute z-50">
-        <BsCamera className="text-4xl m-10 w-100"/>
-        <div class="w-full flex justify-center text-black">
-            {
-                navLinks.map((navLink: TNavLink, index: number) => (
-                    <a href={navLink.url} class="m-2 border-b-2 border-transparent hover:border-b-white hover:border-b-2 transition-colors duration-150 text-xl uppercase
-                    font-bold font-akshar
-                    ">{navLink.name}</a>
-                ))
-            }
+        <BsCamera className="text-4xl m-10 w-100 hidden md:block"/>
+        <div class="md:hidden flex w-full justify-end ">
+            <button class="outline-none mobile-menu-button">
+                <GrMenu/>
+                
+            </button>
+        </div>
+        <div class="w-full hidden md:flex justify-center text-black">
+            <ul class="flex flex-col p-4 mt-40 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 ">
+                {
+                    navLinks.map((navLink: TNavLink, index: number) => (
+                    <li>
+                        <a href={navLink.url} class="m-2 border-b-2 border-transparent hover:border-b-white hover:border-b-2 transition-colors duration-150 text-xl uppercase
+                        font-bold font-akshar
+                        ">{navLink.name}</a>
+                    </li>
+                    ))
+                }
+            </ul>
+        </div>
+
+        <div class="hidden mobile-menu">
+            <ul>
+                {
+                    navLinks.map((navLink: TNavLink) => (
+                        <li>
+                            <a href={navLink.url} class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">{navLink.name}</a>
+                        </li>                            
+                    ))
+                }
+            </ul>
         </div>
     </div>
 </nav>
+<script is:inline>
+    const btn = document.querySelector("button.mobile-menu-button");
+	const menu = document.querySelector(".mobile-menu");
+
+	// Add Event Listeners
+	btn.addEventListener("click", () => {
+	menu.classList.toggle("hidden");
+	});
+</script>
