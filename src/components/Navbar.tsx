@@ -62,7 +62,7 @@ export default function Navbar() {
           <ul className="flex flex-col p-4 mt-40 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
             {navLinks.map((navLink: TNavLink, index: number) => (
               <li key={index}>
-                <a href={navLink.url} className="block text-sm">
+                <a href={navLink.url} className="block text-xl">
                   {navLink.name}
                 </a>
               </li>
