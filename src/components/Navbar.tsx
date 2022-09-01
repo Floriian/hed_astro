@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GrMenu } from "react-icons/gr/index";
 import { BsCamera } from "react-icons/bs/index";
 import { useScroll } from "../hooks/index";
@@ -16,7 +16,17 @@ type TNavLink = {
 
 export default function Navbar() {
   const [open, setOpen] = useState<boolean>(false);
+  const [homepage, setHomepage] = useState<boolean>(false);
+
   const scroll = useScroll();
+
+  useEffect(() => {
+    if (window.location.pathname != "/home") {
+      setHomepage(false);
+    } else {
+      setHomepage(true);
+    }
+  }, [homepage]);
 
   const navLinks: INavLinks = [
     {
@@ -38,7 +48,6 @@ export default function Navbar() {
   ];
 
   const handleOpen = () => {
-    console.log("clicked");
     if (open) {
       setOpen(false);
     } else {
@@ -48,12 +57,18 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="flex justify-between items-center w-full absolute z-50">
+      <nav
+        className={
+          homepage
+            ? "flex justify-between items-center w-full absolute z-50"
+            : "flex justify-between items-center w-full z-50"
+        }
+      >
         <BsCamera className="text-4xl m-10 w-100 hidden md:block" />
         <div className="md:hidden flex w-full justify-end">
           <button
             className="outline-none text-4xl m-2 z-50 fixed"
-            onClick={() => setOpen(!open)}
+            onClick={() => handleOpen()}
           >
             <GrMenu />
           </button>
@@ -74,7 +89,7 @@ export default function Navbar() {
         <nav className="w-full z-40 fixed">
           <ul
             className={
-              scroll <= 200
+              homepage && scroll <= 200
                 ? "bg-transparent h-auto text-white"
                 : "bg-white h-auto text-black"
             }
