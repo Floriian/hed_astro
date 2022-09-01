@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import * as nodemailer from "nodemailer";
 export default function Contact() {
-  const [data, setData] = useState({
-    service: process.env.EMAIL_SERVICE,
-    username: process.env.EMAIL_USERNAME,
-    password: process.env.EMAIL_PASSWORD,
-  });
-
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phonenumber, setPhonenumber] = useState<string>("");
-  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await console.log(name, email, phonenumber);
+    const body = `
+    Név: ${name}<br/>
+    Email cím: ${email}<br/>
+    Telefonszám: ${phonenumber}<br/>
+    `;
+    window.open(
+      `mailto:asdasd@gmail.com?subject=Kapcsolatfelv%C3%A9tel&body=asdasdasd`
+    );
   };
 
   return (
