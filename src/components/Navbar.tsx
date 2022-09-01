@@ -86,7 +86,7 @@ export default function Navbar() {
         </div>
       </nav>
       {open ? (
-        <nav className="w-full z-40 fixed">
+        <nav className="w-full z-40 fixed md:hidden">
           <ul
             className={
               homepage && scroll <= 200

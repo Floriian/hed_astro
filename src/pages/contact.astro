@@ -1,42 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import * as nodemailer from "nodemailer";
-
-const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    auth: {
-        user: 'davin96@ethereal.email',
-        pass: 'nMyXqskuNBuH1A5h2J'
-    }
-});
-
-const sendEmail = async () => {
-    let name = document.getElementById("name");
-    let email = document.getElementById("email");
-
-    let info = await transporter.sendMail({
-        from: "HED WEBSITE",
-        to: "davin96@ethereal.email",
-        subject: "Új kapcsolat felvételi kérelem",
-        text: `Név: ${name}<br>Email: ${email}<br>`
-    })
-    
-}
-
+import Contact from "../components/Contact"
 ---
 
 <Layout title="Havasi Edvin Dániel - Kapcsolat">
-    <div class="text-center">
-        <h1 class="text-4xl mb-2">Kapcsolat</h1>
-        <p class="mb-5">Lépjen velem kapcsolatba!</p>
-        <form class="my-auto">
-            <input type="text" placeholder="Név" id="name" class="border-b-2 border-b-gray-500 p-2 focus:border-b-sky-600 focus:outline-none">
-            <br>
-            <input type="email" placeholder="E-Mail cím" id="email" class="border-b-2 border-b-gray-500 p-2 focus:border-b-sky-600 focus:outline-none mt-5">
-            <br>
-            <button type="submit" class="mt-5 bg-green-500 pr-10 pl-10 pt-2 pb-2 rounded-full text-white" onclick={() => sendEmail}>Elküldés</button>
-        </form>
-    </div>
+    <Contact client:load/>
 </Layout>
-
